@@ -5,13 +5,13 @@ from random import randint, choice
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
         super().__init__()
-        self.playerWalk1 = pygame.image.load(f'{PARENT_FOLDER}/graphics/player/player_walk_1.png').convert_alpha()
-        self.playerWalk2 = pygame.image.load(f'{PARENT_FOLDER}/graphics/player/player_walk_2.png').convert_alpha()
+        self.playerWalk1 = pygame.image.load(f'graphics/player/player_walk_1.png').convert_alpha()
+        self.playerWalk2 = pygame.image.load(f'graphics/player/player_walk_2.png').convert_alpha()
         self.playerWalk = [self.playerWalk1, self.playerWalk2]
         self.playerIndex = 0
-        self.playerJump = pygame.image.load(f'{PARENT_FOLDER}/graphics/player/jump.png').convert_alpha()
+        self.playerJump = pygame.image.load(f'graphics/player/jump.png').convert_alpha()
 
-        self.jumpSound = pygame.mixer.Sound(f'{PARENT_FOLDER}/audio/jump.mp3')
+        self.jumpSound = pygame.mixer.Sound(f'audio/jump.mp3')
         self.jumpSound.set_volume(0.1)
 
 
@@ -59,13 +59,13 @@ class Enemy(pygame.sprite.Sprite):
 
         if enemyType == 'fly':
 
-            self.flyFrame1 = pygame.image.load(f'{PARENT_FOLDER}/graphics/Fly/Fly1.png').convert_alpha()
-            self.flyFrame2 = pygame.image.load(f'{PARENT_FOLDER}/graphics/Fly/Fly2.png').convert_alpha()
+            self.flyFrame1 = pygame.image.load(f'graphics/Fly/Fly1.png').convert_alpha()
+            self.flyFrame2 = pygame.image.load(f'graphics/Fly/Fly2.png').convert_alpha()
             self.frames = [self.flyFrame1, self.flyFrame2]
             yPos = 210
         else:
-            self.snailFrame1 = pygame.image.load(f'{PARENT_FOLDER}/graphics/snail/snail1.png').convert_alpha()
-            self.snailFrame2 = pygame.image.load(f'{PARENT_FOLDER}/graphics/snail/snail2.png').convert_alpha()
+            self.snailFrame1 = pygame.image.load(f'graphics/snail/snail1.png').convert_alpha()
+            self.snailFrame2 = pygame.image.load(f'graphics/snail/snail2.png').convert_alpha()
             self.frames = [self.snailFrame1, self.snailFrame2]
             yPos = 300
 
@@ -108,16 +108,16 @@ def spawnEnemy(game):
 def start(game):
 
     """Fonts"""
-    game.testFont = pygame.font.Font(f'{PARENT_FOLDER}/font/Pixeltype.ttf', 50)
+    game.testFont = pygame.font.Font(f'font/Pixeltype.ttf', 50)
 
     """Music"""
-    game.backgroundMusic = pygame.mixer.Sound(f'{PARENT_FOLDER}/audio/music.wav')
+    game.backgroundMusic = pygame.mixer.Sound(f'audio/music.wav')
     game.backgroundMusic.set_volume(0.1)
     game.backgroundMusic.play(loops = -1)
     
     """Background"""
-    game.skySurface = pygame.image.load(f'{PARENT_FOLDER}/graphics/Sky.png').convert_alpha()
-    game.groundSurface = pygame.image.load(f'{PARENT_FOLDER}/graphics/Ground.png').convert_alpha()
+    game.skySurface = pygame.image.load(f'graphics/Sky.png').convert_alpha()
+    game.groundSurface = pygame.image.load(f'graphics/Ground.png').convert_alpha()
 
     """Score and Instructions"""
     game.scoreSurface = game.testFont.render('Score: 0', False, (64,64,64))
@@ -129,7 +129,7 @@ def start(game):
     game.instructSurface = game.testFont.render('Press space or LMB to jump.', False, (111,196,169))
     game.instructRect = game.instructSurface.get_rect(center = (400,325))
     
-    game.playerStandSurface = pygame.image.load(f'{PARENT_FOLDER}/graphics/player/player_stand.png').convert_alpha()
+    game.playerStandSurface = pygame.image.load(f'graphics/player/player_stand.png').convert_alpha()
     game.playerStandSurface = pygame.transform.rotozoom(game.playerStandSurface, 0, 2)
     game.playerStandRect = game.playerStandSurface.get_rect(center = (400, 200))
 
@@ -195,7 +195,7 @@ def update(game, screen, keys, events):
     pass
 
 if __name__ == '__main__':
-    PARENT_FOLDER = 'Ultimate Game'
+    PARENT_FOLDER = ''
     screenSize = (800, 400)
     game = initPygame.InitPyGame(screenSize, "Ultimate Game")
     game.onStart(start)
